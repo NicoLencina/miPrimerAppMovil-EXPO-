@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function App() {
   return (
@@ -16,15 +17,17 @@ export default function App() {
         {/* Vista 2 */}
         <View style={styles.cuadro2}>
           {/* Texto y el input */}
-          <View>
-            <View></View>
-          <View>
-            <Text style={{color:'#A5A5BA', fontSize: 12, fontWeight: 'bold'}}>INICIO</Text>
-            <TextInput
-              style={styles.textoInput}
-              placeholder="Su Ubicación"
-            />
-          </View>
+          <View style={styles.ViewIconTxt}>
+            <View style={styles.IconoA}>
+              {/*<Ionicons name="flag" size={22} color="#7447b8" />*/}
+            </View>
+            <View style={styles.Texto} >
+              <Text style={{color:'#A5A5BA', fontSize: 12, fontWeight: 'bold'}}>INICIO</Text>
+              <TextInput
+                style={styles.textoInput}
+                placeholder="Su Ubicación"
+              />
+            </View>
           </View>
 
           {/* boton de cambio */}
@@ -32,7 +35,11 @@ export default function App() {
             <Text style={styles.textoBoton}>o</Text>
           </TouchableOpacity>
           {/* Texto y el input2 */}
-          <View>
+          <View style={styles.ViewIconTxt}>
+            <View style={styles.IconoA}>
+              {/*<Ionicons name="location" size={22} color="#7447b8" />*/}
+            </View>
+          <View style={styles.Texto} >
             <Text style={{color:'#A5A5BA', fontSize: 12, fontWeight: 'bold'}}>DESTINO</Text>
             <TextInput
                style={styles.textoInput}
@@ -40,9 +47,35 @@ export default function App() {
             />
           </View>
          </View>
+         </View>
 
-        {/*  */}
-        <View style={styles.cuadro3}></View>
+        {/* Vista 3*/}
+        <View style={styles.cuadro3}>
+          {/*Vista Principal tengo dos vistas*/}
+          <View style={styles.ViewIconTxt}>
+            {/*aca van icono y text*/}
+            <View style={styles.IconoA}>  </View>
+            <View style={{alignItems: 'center', gap: 10}}>  
+              <View>
+                <TextInput
+                  style={styles.textoInput}
+                  placeholder="Fecha de salida"
+                />
+                 <TextInput
+                  style={styles.textoInput}
+                  placeholder="Fecha de regreso"
+                />
+              </View> 
+            </View>
+          </View>
+          <View style={styles.ViewIconTxt}>
+            <View style={styles.IconoA}>  </View>
+            <View >
+              <Text>Dia</Text>
+              <Text> La fecha </Text>
+            </View>
+          </View>
+        </View>
 
         {/* Este es para el boton */}
         <TouchableOpacity style={styles.botonBuscar} onPress={() => alert('Hola')}>
@@ -113,10 +146,13 @@ cuadro2:{
     borderRadius: 20,
     zIndex: 0,
     justifyContent: 'space-around', //como es columna le puedo dar pa posicion 
-    alignItems: 'stretch', //en horizonte porque principal es column
+    alignItems: 'stretch', //en horizonte porque principal es column   
 
-    
-
+},
+ViewIconTxt:{
+  flexDirection: 'row', // Para colocar el icono y el texto en una fila
+  alignItems: 'center', // Alinea verticalmente el icono y el texto
+  gap: 10, // Espacio entre el icono y el texto
 },
 
 botonCambiar:{
@@ -129,11 +165,22 @@ botonCambiar:{
   borderRadius: 50,              // Bordes redondeados
   //le doy direccion al boton 
   right: '3%', //ajusto a la derecha para que quede en el medio, esto porque es absoluto 
-  
+  bottom:'30%', // desde abajo le doy un 30/  de la altura 
+},
+IconoA:{
+  flexBasis: '15%',
+  height: '90%',
+  borderRadius: 20, // Para hacer el icono circular
+  backgroundColor: '#42C88F', // Color de fondo del icono
+},
+
+Texto:{
+  flexBasis: '80%',
 },
 
 textoInput:{
     height: 40,
+    
     borderColor: 'gray',
     borderWidth: 0.5,
     paddingHorizontal: 10, 
