@@ -1,7 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-
+import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
 
 export default function App() {
   return (
@@ -13,14 +11,39 @@ export default function App() {
         {/* Texto Inicial */}
         <View style={styles.cuadro1}>
           <Text style={styles.textoBus}>Bus</Text>
-
         </View>
-        {/* ubicación */}
-        <View style={styles.cuadro2}></View>
+
+        {/* Vista 2 */}
+        <View style={styles.cuadro2}>
+          {/* Texto y el input */}
+          <View>
+            <View></View>
+          <View>
+            <Text style={{color:'#A5A5BA', fontSize: 12, fontWeight: 'bold'}}>INICIO</Text>
+            <TextInput
+              style={styles.textoInput}
+              placeholder="Su Ubicación"
+            />
+          </View>
+          </View>
+
+          {/* boton de cambio */}
+          <TouchableOpacity style={styles.botonCambiar} onPress={() => alert('Cambio')}>
+            <Text style={styles.textoBoton}>o</Text>
+          </TouchableOpacity>
+          {/* Texto y el input2 */}
+          <View>
+            <Text style={{color:'#A5A5BA', fontSize: 12, fontWeight: 'bold'}}>DESTINO</Text>
+            <TextInput
+               style={styles.textoInput}
+               placeholder="Su destino"
+            />
+          </View>
+         </View>
 
         {/*  */}
         <View style={styles.cuadro3}></View>
-        
+
         {/* Este es para el boton */}
         <TouchableOpacity style={styles.botonBuscar} onPress={() => alert('Hola')}>
           <Text style={styles.textoBoton}>Tocame</Text>
@@ -80,6 +103,7 @@ textoBus:{
 },
 
 cuadro2:{
+   
     backgroundColor: '#ffffff', // Color de fondo
     padding: 20,                // Espaciado interno
     width: '100%',              // Ancho completo disponible
@@ -87,8 +111,35 @@ cuadro2:{
     height: 170,              // Altura fija
     margin:30,
     borderRadius: 20,
-    zIndex: 1,
+    zIndex: 0,
+    justifyContent: 'space-around', //como es columna le puedo dar pa posicion 
+    alignItems: 'stretch', //en horizonte porque principal es column
+
+    
+
 },
+
+botonCambiar:{
+  
+  backgroundColor: '#42C88F', // Color de fondo
+  position: 'absolute',         //lo saco del flujo relativo
+  zIndex:3,                     //zindex para que quede por encima de los inputs
+  height: '60%',
+  width:'28%',
+  borderRadius: 50,              // Bordes redondeados
+  //le doy direccion al boton 
+  right: '3%', //ajusto a la derecha para que quede en el medio, esto porque es absoluto 
+  
+},
+
+textoInput:{
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 0.5,
+    paddingHorizontal: 10, 
+    borderRadius: 10,   //borde del texto
+},
+
 cuadro3:{
     backgroundColor: '#ffffff', // Color de fondo
     padding: 20,                // Espaciado interno
